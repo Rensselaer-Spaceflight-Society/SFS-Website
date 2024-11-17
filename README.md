@@ -1,5 +1,8 @@
 # SFS Website
 
+### To Find Files to Upload to Cpanel:
+Go to the folder labeled 'dist', and all the files there will need to be uploaded.
+
 Vue.js + typescript
 
 [discord link used](https://discord.gg/Y8uVhAqGsQ)
