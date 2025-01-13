@@ -29,10 +29,8 @@ class ThreeParallax {
             let delta = (_a = document.scrollingElement) === null || _a === void 0 ? void 0 : _a.scrollTop;
             if (delta == undefined)
                 delta = 0;
-            this.earth.position.set(0, Math.min(Math.max(0, delta - window.innerHeight * 0.75), window.innerHeight * 0.75) * 0.02, 0);
-            this.titleCard.style.right = `${Math.max(0, delta - 0.25 * window.innerHeight) * 0.2}rem`;
-            this.infoCard.style.left = `${Math.max(0, delta - 0.25 * window.innerHeight) * 0.2}rem`;
-            this.earth.rotation.set(0, 0.01 + delta * 0.001, 0);
+            this.earth.rotation.y += 0.003;
+            this.earth.children[0].rotation.y -= 0.0005;
             /*
             --------------------------------------
             */
@@ -96,10 +94,12 @@ class ThreeParallax {
         // globe animation stuff ------------------------------
         let loader = new THREE.TextureLoader();
         let albedoMap = loader.load("../assets/Albedo.jpg");
+        let bumpMap = loader.load("../assets/Bump.jpg");
         albedoMap.colorSpace = THREE.SRGBColorSpace;
-        let earthGeo = new THREE.SphereGeometry(4, 64, 64);
+        let earthGeo = new THREE.SphereGeometry(4, 32, 32);
         let earthMat = new THREE.MeshPhongMaterial({
             map: albedoMap,
+            bumpMap: bumpMap,
             bumpScale: 0.01,
             shininess: 60,
         });
@@ -109,16 +109,27 @@ class ThreeParallax {
         LightForGlobe.position.set(0, 20, 0);
         LightForGlobe.lookAt(this.earth.position);
         this.camera.add(LightForGlobe);
+        let cloudMap = loader.load("../assets/Clouds.png");
+        let cloudsGeo = new THREE.SphereGeometry(4.1, 32, 32);
+        let cloudsMat = new THREE.MeshStandardMaterial({
+            alphaMap: cloudMap,
+            transparent: true,
+        });
+        let clouds = new THREE.Mesh(cloudsGeo, cloudsMat);
+        this.earth.add(clouds);
         this.scene.add(this.earth);
         // ----------------------------------------------------
+        this.fog_value = 0.009;
+        let fog = new THREE.FogExp2(0x000000, this.fog_value);
+        this.scene.fog = fog;
         this.titleCard = document.createElement("h3");
         this.titleCard.id = "canvasTitle";
-        this.titleCard.classList.add("position-fixed");
+        this.titleCard.classList.add("position-absolute");
         this.titleCard.innerText = "Rensselaer Spaceflight Society";
         this.container.appendChild(this.titleCard);
         this.infoCard = document.createElement("h5");
         this.infoCard.id = "canvasInfo";
-        this.infoCard.classList.add("position-fixed");
+        this.infoCard.classList.add("position-absolute");
         this.infoCard.innerText = "Some text/slogan here probably";
         this.container.appendChild(this.infoCard);
         this.renderer.setAnimationLoop(() => this._RAF());

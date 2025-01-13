@@ -26,11 +26,12 @@
   </head>
   <body>
     <header>
-      <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark opactiy-50">
+      <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-transparent opactiy-50">
         <a class="navbar-brand" href="#">Rensselaer SFS</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
+        <!--
         <div class="collapse navbar-collapse" id="navbarCollapse">
           <ul class="navbar-nav mr-auto">
             <li class="nav-item active">
@@ -39,22 +40,13 @@
             <li class="nav-item float-right">
               <a class="nav-link" href="#">Link</a>
             </li>
-            <li class="nav-item float-right">
-              <a class="nav-link disabled" href="#">Disabled</a>
-            </li>
           </ul>
         </div>
+      -->
       </nav>
     </header>
 
     <main role="main">
-
-      <!--
-        Blank space here gives the illusion of scrolling through the animation, but in reality its just blank
-        with fixed position, so it looks like it's moving.
-      -->
-
-      <div id="scrollContainer"></div>
 
         <!--Parallax Animation here-->
 
@@ -62,7 +54,7 @@
 
         <!--Parallax Animation done-->
 
-        <hr class="featurette-divider">
+        <hr class="featurette-divider" id="fade_in">
 
         <div id="marketingContainer1" class="container marketing">
 
