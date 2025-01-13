@@ -4,11 +4,17 @@
   "description": "website for rensselaer spaceflight society",
   "main": "dist/index.js",
   "scripts": {
-    "clean": "rm -rf public/js"
+    "clean": "rm -rf public/js",
+    "dev": "node debug/app.js"
   },
   "author": "iain",
   "license": "ISC",
   "dependencies": {
     "three": "^0.172.0"
+  },
+  "devDependencies": {
+    "@types/three": "^0.172.0",
+    "cors": "^2.8.5",
+    "express": "^4.21.2"
   }
 }
