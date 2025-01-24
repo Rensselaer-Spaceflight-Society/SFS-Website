@@ -3,13 +3,11 @@
   "version": "0.1.0",
   "description": "website for rensselaer spaceflight society",
   "main": "dist/index.js",
-  "scripts": {
-    "clean": "rm -rf public/js",
-    "dev": "tsc && node debug/app.js"
-  },
+  "scripts": {},
   "author": "iain",
   "license": "ISC",
   "dependencies": {
+    "bootstrap": "^5.3.3",
     "three": "^0.172.0"
   },
   "devDependencies": {
