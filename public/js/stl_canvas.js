@@ -1,5 +1,6 @@
 import * as THREE from "three";
-import { GLTFLoader } from "three/addons/Addons.js";
+import { STLLoader } from 'three/addons/loaders/STLLoader';
+import { OrbitControls } from "three/examples/jsm/Addons.js";
 
 class STLCanvas{
     /*
@@ -11,8 +12,8 @@ class STLCanvas{
     string,
     animate_model: Function(model: THREE.Mesh) => void
     */
-    constructor(parent, h, w, model_name, animate_model){
-        this.renderer = new THREE.WebGLRenderer();
+    constructor(parent, h, w, model_name){
+        this.renderer = new THREE.WebGLRenderer( { antialias: true } );
         this.renderer.setSize(
             w,
             h
@@ -23,23 +24,41 @@ class STLCanvas{
             0.1,
             1000
         );
+        this.controls = new OrbitControls(this.camera, this.renderer.domElement);
+        this.camera.position.set(-7.5,0,-30);
+        this.camera.lookAt(0,0,0);
         this.scene = new THREE.Scene();
+        this.scene.background = new THREE.Color(0xffffff);
 
-        this.scene.add(this.camera);
-
-        parent.appendChild(this.renderer.domElement);  
+        this.scene.add(new THREE.AmbientLight(0xffffff, 0.2));
         
-        this.loader = new GLTFLoader();
-        this.loader.load(`./assets/3d/${model_name}`, (loader_data) => {
+        this.scene.add(this.camera);
+        
+        parent.appendChild(this.renderer.domElement);
+        
+        this.loader = new STLLoader();
 
-            this.model = loader_data.scene;
+        const dirLight = new THREE.DirectionalLight( 0xffffff, 1 );
+        dirLight.position.set( 5, 10, 7.5 );
+        this.scene.add(dirLight);
+
+        this.scene.add(this.controls);
+        this.loader.load(`./assets/3d/${model_name}`, (geometry) => {
+
+            let stl_material = new THREE.MeshPhysicalMaterial({
+                color: 0xd3d3d3,
+            });
+
+            this.model = new THREE.Mesh(geometry, stl_material);
 
             this.scene.add(this.model);
 
+            this.model.rotation.set(-Math.PI/2,0,0);
+            this.model.position.set(5, 0, 0);
             this.renderer.setAnimationLoop(() => {
 
                 // animation stuff here
-                animate_model(this.model);
+                this.controls.update();
 
                 this.renderer.render(this.scene, this.camera);  
             });
@@ -51,7 +70,7 @@ class STLCanvas{
                 console.log((xhr.loaded/xhr.total*100) + `% loaded of model ${model_name}`);
             },
             (err) => {
-                console.error(`Error %d.`, err.code);
+                console.error(err);
             }
         );
     }
