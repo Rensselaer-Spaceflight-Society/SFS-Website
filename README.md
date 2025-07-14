@@ -1,1 +1,0 @@
-# Rensselaer Spaceflight Society Website
