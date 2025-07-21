@@ -22,13 +22,14 @@ export const metadata: Metadata = {
   description: "Rensselaer Spaceflight Society",
 };
 
+// TODO: flesh out later :/
 const CommitteeMenu = () => {
 
   return (
     <div className="h-25 w-50 bg-white p-6 shadow-xl relative justify-between flex items-center">
       <Link className="absolute top-5 left-5 hover:opacity-[0.75]" href="/rocket">Rocket</Link>
       <Link className="absolute top-5 right-5 hover:opacity-[0.75]" href="/lander">Lander</Link>
-      <Link className="absolute bottom-5 left-5 hover:opacity-[0.75]" href="/lunar">Lunar R&D</Link>
+      <Link className="absolute bottom-5 left-5 hover:opacity-[0.75]" href="/lunar">Lunar</Link>
       <Link className="absolute bottom-5 right-5 hover:opacity-[0.75]" href="/cubesat">CubeSat</Link>
     </div>
   );
@@ -58,26 +59,38 @@ export default function RootLayout({
         {/* Navbar Code */}
         <nav className="font-sans bg-transparent">
           <div className="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
-            <Image className="absolute left-5 top-4" src={`/logos/sfs_no_text.png`} alt='' width="64" height="64"></Image>
-            <div className="relative mt-2 text-lg flex h-16 items-center justify-end">
-              <div className="relative me-12">
+            <Link href="/"><Image className="absolute left-5 top-4" src={`/logos/sfs_no_text.png`} alt='' width="64" height="64"></Image></Link>
+            <div className="absolute mt-4 text-2xl flex items-center">
+              Rensselaer<br></br>Spaceflight Society
+            </div>
+            <div className="relative text-lg flex h-16 items-center justify-end">
+              <div className="relative me-12 mt-5">
+                <Dropdown href="/">
+                  Home
+                </Dropdown>
+              </div>
+              <div className="relative me-12 mt-5">
                 {/* Committee Menu is defined above and is just all the links to committee pages */}
                 <Dropdown href="#" MenuContent={<CommitteeMenu />}>
                   Committees
                 </Dropdown>
               </div>
-              <div className="relative me-12">
+              <div className="relative me-12 mt-5">
                 {/* just a link- no dropdown menu- but still a dropdown component */}
                 <Dropdown href="/about">
                   About
                 </Dropdown>
               </div>
-              <div className="relative me-12">
-                {/* 3D models- to be implemented later (see model menu above) */}
+              {/*
+
+              ===Thinking of having like a bunch of interactive CAD models===
+
+              <div className="relative me-12 mt-5">
                 <Dropdown href="#" MenuContent={<ModelMenu/>}>
                   Models
                 </Dropdown>
               </div>
+              */}
             </div>
           </div>
         </nav>
@@ -87,7 +100,7 @@ export default function RootLayout({
 
       
         {/* Footer Code */}
-        <footer className="font-mono mx-0 md:flex md:justify-between max-w-full p-4 sm:px-6 lg:px-8 bg-red-900">
+        <footer className="relative w-full font-mono mx-0 md:flex md:justify-between max-w-full p-4 sm:px-6 lg:px-8 bg-red-900">
             <div className="w-full mx-auto max-w-screen-xl p-4 md:flex md:items-center md:justify-between">
               <span className="text-sm text-gray-700 sm:text-center dark:text-gray-200">© 2025 <a href="/" className="hover:underline">Rensselaer Spaceflight Society</a>
             </span>
