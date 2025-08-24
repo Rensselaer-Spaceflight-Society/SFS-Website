@@ -26,11 +26,11 @@ export const metadata: Metadata = {
 const CommitteeMenu = () => {
 
   return (
-    <div className="h-25 w-50 bg-white p-6 shadow-xl relative justify-between flex items-center">
-      <Link className="absolute top-5 left-5 hover:opacity-[0.75]" href="/rocket">Rocket</Link>
-      <Link className="absolute top-5 right-5 hover:opacity-[0.75]" href="/lander">Lander</Link>
-      <Link className="absolute bottom-5 left-5 hover:opacity-[0.75]" href="/lunar">Lunar</Link>
-      <Link className="absolute bottom-5 right-5 hover:opacity-[0.75]" href="/cubesat">CubeSat</Link>
+    <div className="h-auto w-30 bg-white shadow-xl relative justify-between flex flex-col items-center">
+      <Link className="hover:opacity-[0.75]" href="/rocket">Rocket</Link>
+      <Link className="hover:opacity-[0.75]" href="/lander">Lander</Link>
+      <Link className="hover:opacity-[0.75]" href="/lunar">Lunar</Link>
+      <Link className=" hover:opacity-[0.75]" href="/cubesat">CubeSat</Link>
     </div>
   );
 

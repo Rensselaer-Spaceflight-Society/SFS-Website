@@ -15,13 +15,14 @@ export default function Dropdown({
 
     const [open, setOpen] = React.useState(false);
 
-    const showMenu = open && MenuContent;
+    const showMenu = open;
 
 
     return(
         <div
         onMouseEnter={() => setOpen(true)}
         onMouseLeave={() => setOpen(false)}
+        onTouchStart={() => setOpen(!open)}
         className="relative h-fit w-fit">
             <Link className="relative text-white" href={href}>
                 {children}
