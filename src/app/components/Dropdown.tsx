@@ -42,7 +42,7 @@ export default function Dropdown({
                 exit={{ opacity: 0, y: 15 }}
                 style={{ x: '-50%' }}
                 transition={{ duration: 0.3, ease: 'easeOut' }}
-                className="absolute left-1/2 top-10 bg-white text-black">
+                className="absolute left-1/2 z-10 top-10 bg-white text-black">
                     <div className="absolute -top-6 left-0 right-0 h-6 bg-transparent"></div>
                     {MenuContent}
                 </motion.div>

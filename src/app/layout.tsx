@@ -1,11 +1,15 @@
+'use client';
+
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faGithub, faInstagram, faDiscord } from "@fortawesome/free-brands-svg-icons";
+//@ts-ignore
 import "./globals.css";
 import Link from "next/link";
 import Dropdown from "./components/Dropdown";
 import Image from "next/image";
+import { motion } from "framer-motion";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -17,23 +21,16 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
-export const metadata: Metadata = {
-  title: "RPI Spaceflight",
-  description: "Rensselaer Spaceflight Society",
-};
-
 // TODO: flesh out later :/
 const CommitteeMenu = () => {
-
   return (
-    <div className="h-auto w-30 bg-white shadow-xl relative justify-between flex flex-col items-center">
+    <div className="h-auto w-30 bg-white z-10 shadow-xl relative justify-between flex flex-col items-center">
       <Link className="hover:opacity-[0.75]" href="/rocket">Rocket</Link>
       <Link className="hover:opacity-[0.75]" href="/lander">Lander</Link>
       <Link className="hover:opacity-[0.75]" href="/lunar">Lunar</Link>
       <Link className=" hover:opacity-[0.75]" href="/cubesat">CubeSat</Link>
     </div>
   );
-
 }
 
 const ModelMenu = () => {
@@ -98,26 +95,71 @@ export default function RootLayout({
         <br></br>
         {children}
 
-      
-        {/* Footer Code */}
-        <footer className="relative w-full font-mono mx-0 md:flex md:justify-between max-w-full p-4 sm:px-6 lg:px-8 bg-red-900">
-            <div className="w-full mx-auto max-w-screen-xl p-4 md:flex md:items-center md:justify-between">
-              <span className="text-sm text-gray-700 sm:text-center dark:text-gray-200">© 2025 <a href="/" className="hover:underline">Rensselaer Spaceflight Society</a>
-            </span>
-            <ul className="flex items-center gap-4 mt-3 text-sm font-medium text-gray-700 dark:text-gray-200 sm:mt-0">
-                <li>
-                  <a href="https://github.com/Rensselaer-Spaceflight-Society"><FontAwesomeIcon icon={faGithub} className="w-6 h-6 hover:text-white" /></a>
-                </li>
-                <li>
-                    <a href="https://www.instagram.com/rensselaer_spaceflight_society/"><FontAwesomeIcon icon={faInstagram} className="w-6 h-6 hover:text-white" /></a>
-                </li>
-                <li>
-                    <a href="https://discord.gg/Y8uVhAqGsQ"><FontAwesomeIcon icon={faDiscord} className="w-6 h-6 hover:text-white" /></a>
-                </li>
-            </ul>
-            </div>
-        </footer>
+        <footer className="relative mt-95 w-full font-mono mx-0 md:flex md:justify-between max-w-full p-4 sm:px-6 lg:px-8 bg-red-900">
+        <div className="w-full mx-auto max-w-screen-xl p-4 md:flex md:items-center md:justify-between">
+          <span className="text-sm text-gray-700 sm:text-center dark:text-gray-200">
+            © 2025 <a href="/" className="hover:underline">Rensselaer Spaceflight Society</a>
+          </span>
+          <ul className="flex items-center gap-6 mt-3 text-sm font-medium text-gray-700 dark:text-gray-200 sm:mt-0">
+            <li>
+              <motion.a 
+                href="https://github.com/Rensselaer-Spaceflight-Society"
+                whileHover={{ scale: 1.1 }}
+                whileTap={{ scale: 0.95 }}
+                transition={{ duration: 0.2 }}
+              >
+                <motion.div
+                  initial={{ color: "#d1d5db" }}
+                  whileHover={{ color: "#ffffff" }}
+                  transition={{ duration: 0.3 }}
+                >
+                  <FontAwesomeIcon icon={faGithub} size="2x" />
+                </motion.div>
+              </motion.a>
+            </li>
+
+            <li>
+              <motion.a 
+                href="https://www.instagram.com/rensselaer_spaceflight_society/"
+                className=""
+                whileHover={{ scale: 1.1 }}
+                whileTap={{ scale: 0.95 }}
+                transition={{ duration: 0.2 }}
+              >
+                <motion.div
+                  className=""
+                  initial={{ color: "#d1d5db" }}
+                  whileHover={{ color: "#E1306C" }}
+                  transition={{ duration: 0.3 }}
+                >
+                <FontAwesomeIcon
+                  icon={faInstagram} size="2x"
+                />
+                </motion.div>
+              </motion.a>
+            </li>
+
+            <li>
+              <motion.a 
+                href="https://discord.gg/Y8uVhAqGsQ"
+                whileHover={{ scale: 1.1 }}
+                whileTap={{ scale: 0.95 }}
+                transition={{ duration: 0.2 }}
+              >
+                <motion.div
+                  initial={{ color: "#d1d5db" }}
+                  whileHover={{ color: "#6366f1" }}
+                  transition={{ duration: 0.3 }}
+                >
+                  <FontAwesomeIcon icon={faDiscord} size="2x"/>
+                </motion.div>
+              </motion.a>
+            </li>
+          </ul>
+        </div>
+      </footer>
       </body>
     </html>
+    
   );
 }
