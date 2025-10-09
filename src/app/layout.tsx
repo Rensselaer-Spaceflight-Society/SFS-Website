@@ -1,5 +1,4 @@
 'use client';
-
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -54,43 +53,43 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         {/* Navbar Code */}
-        <nav className="font-sans bg-transparent">
-          <div className="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
-            <Link href="/"><Image className="absolute left-5 top-4" src={`/logos/sfs_no_text.png`} alt='' width="64" height="64"></Image></Link>
-            <div className="absolute mt-4 text-2xl flex items-center">
-              Rensselaer<br></br>Spaceflight Society
+        <nav id="home" className="font-sans bg-transparent z-20 relative">
+
+        <Link href="/#home" className="flex z-20">
+          <Image
+            src="/logos/sfs_no_text.png"
+            alt="RPI Spaceflight Society logo"
+            width={64}
+            height={64}
+            className="z-20 mt-4 ms-4 absolute pointer-events-auto"
+            priority
+          />
+        </Link>
+
+        <div className="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8 relative">
+
+          {/* Title */}
+          <div className="absolute mt-4 text-2xl flex items-center z-20 pointer-events-none">
+            Rensselaer<br />Spaceflight Society
+          </div>
+
+          {/* Navbar links */}
+          <div className="relative text-lg flex h-16 items-center justify-end z-30">
+            <div className="relative me-12 mt-5">
+              <Dropdown href="/#home">Home</Dropdown>
             </div>
-            <div className="relative text-lg flex h-16 items-center justify-end">
-              <div className="relative me-12 mt-5">
-                <Dropdown href="/">
-                  Home
-                </Dropdown>
-              </div>
-              <div className="relative me-12 mt-5">
-                {/* Committee Menu is defined above and is just all the links to committee pages */}
-                <Dropdown href="#" MenuContent={<CommitteeMenu />}>
-                  Committees
-                </Dropdown>
-              </div>
-              <div className="relative me-12 mt-5">
-                {/* just a link- no dropdown menu- but still a dropdown component */}
-                <Dropdown href="/about">
-                  About
-                </Dropdown>
-              </div>
-              {/*
-
-              ===Thinking of having like a bunch of interactive CAD models===
-
-              <div className="relative me-12 mt-5">
-                <Dropdown href="#" MenuContent={<ModelMenu/>}>
-                  Models
-                </Dropdown>
-              </div>
-              */}
+            <div className="relative me-12 mt-5">
+              <Dropdown href="#" MenuContent={<CommitteeMenu />}>
+                Committees
+              </Dropdown>
+            </div>
+            <div className="relative me-12 mt-5">
+              <Dropdown href="/about">About</Dropdown>
             </div>
           </div>
-        </nav>
+        </div>
+      </nav>
+
 
         <br></br>
         {children}
