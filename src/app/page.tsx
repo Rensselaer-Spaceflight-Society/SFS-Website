@@ -1,8 +1,12 @@
+'use client'
+
 import { ReactNode } from "react";
 import Image from "next/image";
 import { Geist, Geist_Mono } from "next/font/google";
 import Gallery from "./components/Gallery";
 import Link from "next/link";
+import Cfooter from "./components/cfooter"
+import { motion, AnimatePresence } from 'framer-motion';
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -57,7 +61,7 @@ export default function Home({
                     } at 5:00 in JEC 3207!</p>
                 </div>
             </div>
-            <div className="relative p-2 pb-0 bg-amber-50 min-w-full h-216.5 mt-169">
+            <div className="relative p-2 pb-0 bg-amber-50 min-w-full h-auto mt-149">
                 <Gallery>
                     <Image src={"/photos/cad_workshop_1.png"} width={4032} height={3024} alt="MercerX CAD Workshop"></Image>
                     <Image src={"/photos/pcb_workshop_1.png"} width={4032} height={3024} alt="MercerX PCB Design Workshop"></Image>
@@ -68,27 +72,37 @@ export default function Home({
                 </Gallery>
             </div>
 
-            <div className="flex-col justify-center pt-20 align-middle text-center h-90 min-w-full">
-                <p className="text-3xl text-white">
-                    Meeting Times
-                </p>
-                <br />
-                <p className="text-2xl/10 text-white ">
-                    {
-                        /* RU Giving thing
-                         https://securelb.imodules.com/s/1225/lg22/form.aspx?sid=1225&gid=1&pgid=10302&cid=23465 */
-                    }
-                    <Link href="./rocket">Rocket Engine</Link> &rarr; Sundays 1:00 - 3:00 JEC 3207
-                    <br />
-                    <Link href="./cubesat">CubeSat</Link> &rarr; Sundays 11:00 - 1:00 Ricketts 207 
-                    <br />
-                    <Link href="./lunar">Lunar R&D</Link> &rarr; Fridays 4:00 - 6:00 Ricketts 411
-                    <br />
-                    <Link href="./lander">Lander</Link> &rarr; Saturdays 2:00 - 4:00 Ricketts 411
-                    <br />
-                    <Link href="./about">Executive Committee</Link> &rarr; Sundays 4:30 - 6:00 JEC 3207
-                </p>
-            </div>
+            <div className="flex flex-col items-center justify-center text-center py-20 text-white bg-transparent">
+                <p className="text-4xl font-semibold mb-6">Meeting Times</p>
+                <div className="flex flex-wrap justify-center gap-6 max-w-4xl">
+
+                    {[
+                    { name: "Rocket Engine", href: "./rocket", time: "Sundays 1:00 - 3:00", location: "Ricketts 207", color: "from-red-500 to-orange-500" },
+                    { name: "CubeSat", href: "./cubesat", time: "Sundays 11:00 - 1:00", location: "Ricketts 207", color: "from-sky-400 to-blue-600" },
+                    { name: "Lunar R&D", href: "./lunar", time: "Fridays 4:00 - 6:00", location: "Ricketts 411", color: "from-gray-400 to-zinc-600" },
+                    { name: "Lander", href: "./lander", time: "Saturdays 2:00 - 4:00", location: "Ricketts 411", color: "from-yellow-400 to-amber-600" },
+                    { name: "CORE", href: "./core", time: "Sundays 7:00 - 9:00", location: "JEC 3210", color: "from-emerald-400 to-green-600" },
+                    { name: "Executive Committee", href: "./about", time: "Sundays 4:30 - 6:00", location: "JEC 3210", color: "from-purple-400 to-indigo-600" },
+                    ].map((team, i) => (
+                    <motion.div
+                        key={i}
+                        whileHover={{ scale: 1.05, y: -5 }}
+                        whileTap={{ scale: 0.97 }}
+                        className={`p-[2px] rounded-2xl bg-gradient-to-br ${team.color} transition-all duration-300 shadow-lg hover:shadow-xl`}
+                    >
+                        <div className="bg-black rounded-2xl px-6 py-5">
+                        <Link href={team.href} className="text-2xl font-medium hover:underline">
+                            {team.name}
+                        </Link>
+                        <p className="text-lg text-gray-200 mt-1">{team.time}</p>
+                        <p className="text-sm text-gray-400">{team.location}</p>
+                        </div>
+                    </motion.div>
+                    ))}
+
+                </div>
+                </div>
+
             <hr className="h-px my-8 bg-gray-200 border-0 dark:bg-gray-700"></hr>
 
             <div className="h-150 bg-black min-w-full text-black flex justify-center"> {
@@ -135,6 +149,9 @@ export default function Home({
                     </div>
                 </div>
             </div>
+            <br></br>
+            <Cfooter/>
         </div>
+        
     );
 }

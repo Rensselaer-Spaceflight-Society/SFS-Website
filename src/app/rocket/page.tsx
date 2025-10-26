@@ -3,6 +3,38 @@ import { ReactNode, useState, useEffect } from "react";
 import Image from "next/image";
 import Rpu1Desc from "../components/rpu1-desc";
 import Rpu2Desc from "../components/rpu2-desc";
+import SubteamDesc from '../components/Subteam_desc';
+import Cfooter from "../components/cfooter"
+
+const subteamsJson = [
+  {
+    title: "Propulsion",
+    photo: "/rocket/st-prop.png",
+    description: "Responsible for engine design, testing, and performance optimization.",
+  },
+  {
+    title: "Fluids",
+    photo: "/rocket/st-fluid.jpg",
+    description: "Responsible for feed and fluid system design.",
+  },
+  {
+    title: "Safety",
+    photo: "",
+    description: "",
+  },
+  {
+    title: "Systems",
+    photo: "/rocket/st-sys.jpg",
+    description: "Develops telemetry, control systems, and onboard electronics.",
+  },
+  {
+    title: "Aerostructures",
+    photo: "/rocket/st-aero.jpg",
+    description: "",
+  },
+];
+
+
 
 export default function Rocket({
   children,
@@ -19,7 +51,7 @@ export default function Rocket({
 
   return (
     <div className="relative min-w-full">
-      <div className="relative h-[70vh] -mt-[90px] overflow-hidden">
+      <div className="relative h-[70vh] -mt-[105px] overflow-hidden">
         <div className="absolute inset-0 -z-10">
           <Image
             className="w-full h-full object-cover opacity-40"
@@ -29,7 +61,7 @@ export default function Rocket({
             height={864}
             priority
             style={{
-              transform: `translateY(${scrollY * -0.2}px)`,
+              transform: `translateY(${scrollY * 0.2}px)`,
               transition: "transform 0.1s linear",
             }}
           />
@@ -37,7 +69,7 @@ export default function Rocket({
 
         {/* Foreground text */}
         <div className="flex flex-col items-center justify-center h-full text-white text-center">
-          <p className="text-5xl font-sans leading-tight">
+          <p className="text-5xl lg:text-7xl font-sans leading-tight">
             RPI Experimental Rocket<br />Propulsion Committee (RXPI)
           </p>
           <hr className="w-2/3 my-6 border-gray-400 opacity-30" />
@@ -45,16 +77,23 @@ export default function Rocket({
       </div>
 
       {/* === Sections Below === */}
-      <section className="relative bg-white text-slate-800 py-16">
+      <section className="relative bg-white text-slate-800 py-8">
         <div className="max-w-8xl mx-auto px-3">
           <Rpu1Desc completionDate="November 15th-16th 2025" ctaHref="./rocket#design" />
         </div>
       </section>
 
-      <section className="py-16 bg-gray-50 text-slate-800 text-center">
+      <section className="py-8 bg-gray-50 text-slate-800 text-center">
         <div className="max-w-8xl mx-auto px-3">
           <Rpu2Desc completionDate="TBD" ctaHref="./" />
         </div>
+      </section>
+
+      <section id="subteams" className="py-5 bg-gray-50 text-slate-800 text-center min-h-125">
+          <h2 className="text-2xl font-semibold mb-4">Subteams</h2>
+          <div className="max-w-8xl mx-auto">
+              <SubteamDesc data={subteamsJson} />
+          </div>
       </section>
 
       <section className="py-5 bg-gray-50 text-slate-800 text-center">
@@ -80,6 +119,8 @@ export default function Rocket({
           ></object>
         </p>
       </section>
+
+      <Cfooter></Cfooter>
     </div>
   );
 }

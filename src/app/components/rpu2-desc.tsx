@@ -77,8 +77,8 @@ export default function Rpu2Desc({ completionDate = 'Q4 2025', ctaHref = '/proje
                     </linearGradient>
                   </defs>
                   <g opacity="0.95">
-                    <image x={0.5*(420-420*0.8)} href="/rocket/engine_cad_1.png" height={260*0.8} width={420*0.8}></image>
-                    <text x="70" y="250" fontFamily="Inter, ui-sans-serif, system-ui" fontSize="11" fill="#0f172a" opacity="0.6">Graphite Nozzle + Doublet impingement injector</text>
+                    <image x={80} y={-100} href="https://static.vecteezy.com/system/resources/previews/001/218/694/non_2x/under-construction-warning-sign-vector.jpg" height={420} width={260}></image>
+                    <text x="70" y="250" fontFamily="Inter, ui-sans-serif, system-ui" fontSize="11" fill="#0f172a" opacity="0.6">TBD</text>
                   </g>
                 </svg>
               </div>

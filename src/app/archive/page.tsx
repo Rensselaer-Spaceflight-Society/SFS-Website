@@ -1,7 +1,6 @@
 'use client'
 import { ReactNode, useState, useEffect } from "react";
 import Image from "next/image";
-import Cfooter from "../components/cfooter"
 
 
 export default function Rocket({
@@ -26,7 +25,7 @@ export default function Rocket({
         <div className="w-full h-250 mb-0 overflow-hidden">
             <hr className="relative z-0 h-1 my-2 opacity-30 bg-gray-400 border-0 dark:bg-gradient-to-b"></hr>
             <p className="text-white mt-10 text-5xl font-sans align-middle mb-10 text-center w-min-full">
-                Lunar R&D Committee
+                Completed Projects
             </p>
             <Image
                 className="absolute top-[-120] left-0 w-full h-auto z-[-1] opacity-40"
@@ -42,7 +41,6 @@ export default function Rocket({
             <div className="h-full bg-white from-transparent w-full">
                 <br />
             </div>
-            <Cfooter></Cfooter>
         </div>
     );
 }
