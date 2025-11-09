@@ -14,8 +14,13 @@ export default function Dropdown({
 }>){
 
     const [open, setOpen] = React.useState(false);
+    const [mounted, setMounted] = React.useState(false);
 
-    const showMenu = open;
+    React.useEffect(() => {
+        setMounted(true);
+    }, []);
+
+    const showMenu = open && mounted;
 
 
     return(
@@ -31,7 +36,7 @@ export default function Dropdown({
                     transform: showMenu ? "scaleX(1)" : "scaleX(0)",
                 }}
                 className="absolute -bottom-2 -left-2 -right-2 h-1 rounded-full bg-white transition-transform duration-300 ease-out">
-                    
+
                 </span>
             </Link>
             <AnimatePresence>

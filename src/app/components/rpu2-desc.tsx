@@ -1,4 +1,6 @@
-import React from 'react';
+'use client';
+
+import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { Rocket, Cpu, AirVent, Cloud } from 'lucide-react';
 
@@ -8,6 +10,15 @@ type Props = {
 };
 
 export default function Rpu2Desc({ completionDate = 'Q4 2025', ctaHref = '/projects/rpu-1' }: Props) {
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  const MotionDiv = mounted ? motion.div : 'div';
+  const MotionFigure = mounted ? motion.figure : 'figure';
+
   return (
     <section
       aria-labelledby="rpu1-heading"
@@ -15,10 +26,12 @@ export default function Rpu2Desc({ completionDate = 'Q4 2025', ctaHref = '/proje
     >
       <div className="mx-auto max-w-6xl px-6 lg:px-8">
         <div className="grid gap-8 md:grid-cols-2 md:items-center">
-          <motion.div
-            initial={{ opacity: 0, x: -18 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.55, ease: 'easeOut' }}
+          <MotionDiv
+            {...(mounted ? {
+              initial: { opacity: 0, x: -18 },
+              animate: { opacity: 1, x: 0 },
+              transition: { duration: 0.55, ease: 'easeOut' }
+            } : {})}
           >
             <p className="inline-flex items-center gap-2 rounded-full bg-rose-50 px-3 py-1 text-sm font-medium text-rose-700">
               <Rocket className="h-4 w-4" aria-hidden />
@@ -58,12 +71,14 @@ export default function Rpu2Desc({ completionDate = 'Q4 2025', ctaHref = '/proje
                 </div>
               </div>
             </dl>
-          </motion.div>
+          </MotionDiv>
 
-          <motion.figure
-            initial={{ opacity: 0, scale: 0.98 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.6, ease: 'easeOut' }}
+          <MotionFigure
+            {...(mounted ? {
+              initial: { opacity: 0, scale: 0.98 },
+              animate: { opacity: 1, scale: 1 },
+              transition: { duration: 0.6, ease: 'easeOut' }
+            } : {})}
             className="relative col-start-2 row-start-1 md:row-start-auto"
             aria-hidden
           >
@@ -83,7 +98,7 @@ export default function Rpu2Desc({ completionDate = 'Q4 2025', ctaHref = '/proje
                 </svg>
               </div>
             </div>
-          </motion.figure>
+          </MotionFigure>
         </div>
       </div>
     </section>
