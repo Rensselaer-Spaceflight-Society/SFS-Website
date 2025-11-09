@@ -1,13 +1,9 @@
 'use client'
-import { ReactNode, useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import Image from "next/image";
 
 
-export default function Rocket({
-    children,
-}: Readonly<{
-    children: ReactNode
-}>){
+export default function Rocket(){
 
     /* TODO: replace with framer motion? not necessary-might bloat */
 
@@ -34,8 +30,9 @@ export default function Rocket({
                 width={1321}
                 height={864}
                 style={{
-                transform: `translateY(${scrollY * -0.2}px) scaleX(1)`,
+                transform: `scale(1.3) translateX(${scrollY * 0.15}px) translateY(${scrollY * -0.1}px)`,
                 transition: "transform 0.1s linear",
+                transformOrigin: "center center",
                 }}
             />
             <div className="h-full bg-white from-transparent w-full">

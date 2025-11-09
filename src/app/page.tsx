@@ -1,6 +1,6 @@
 'use client'
 
-import { ReactNode } from "react";
+import { useState, useEffect } from "react";
 import Image from "next/image";
 import { Geist, Geist_Mono } from "next/font/google";
 import Gallery from "./components/Gallery";
@@ -18,16 +18,21 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
-export default function Home({
-    children,
-}:Readonly<{
-    children: ReactNode
-}>){
+export default function Home(){
+    const [mounted, setMounted] = useState(false);
+    const [scrollY, setScrollY] = useState(0);
+
+    useEffect(() => {
+        setMounted(true);
+        const scrollFunc = () => setScrollY(window.scrollY);
+        window.addEventListener("scroll", scrollFunc);
+        return () => window.removeEventListener("scroll", scrollFunc);
+    }, []);
 
     const first_gbm: Date = new Date("August 30, 2025 17:00:00 GMT-4:00");
     const now: Date = new Date();
     let next_sat: Date = new Date(now);
-    const days_until: number = (6 - now.getDay() + 7) % 7; 
+    const days_until: number = (6 - now.getDay() + 7) % 7;
     next_sat.setDate(now.getDate() + days_until);
     next_sat.setHours(17, 0, 0, 0);
     if (now.getDay() === 6) {
@@ -48,11 +53,22 @@ export default function Home({
         <div className={`${geistSans.variable} ${geistMono.variable} antialiased h-550`}>
             {/* Big title type stuff */}
             <div className="absolute top-0 overflow-y-hidden z-[-1] min-h-full min-w-full">
-                <Image className="absolute top-[-95] z-[-1] min-w-full min-h-full scale-x-[-1] opacity-50" src={"/rocket/stand_1.png"} alt='' width="1558" height="937"></Image>
+                <Image
+                    className="absolute top-[-95] z-[-1] min-w-full min-h-full scale-x-[-1] opacity-50"
+                    src={"/rocket/stand_1.png"}
+                    alt=''
+                    width="1558"
+                    height="937"
+                    style={{
+                        transform: `scale(1.3) translateX(${scrollY * -0.15}px) translateY(${scrollY * 0.1}px)`,
+                        transition: "transform 0.1s linear",
+                        transformOrigin: "center center",
+                    }}
+                ></Image>
                 <div className="flex-col p-60 pt-40 font-sans items-center text-center justify-center min-h-full mt-22 min-w-full bg-transparent">
                     <p className="lg:text-7xl md:text-5xl text-white">
                         Interested in Rocket Engines, Satellites, or Space Exploration?
-                    </p> 
+                    </p>
                     <br />
                     <p className="lg:text-2xl md:text-xl mt-10 text-white">Show up to one of our committee meetings or
                     join us at our General Body Meeting on Saturday {
@@ -83,22 +99,27 @@ export default function Home({
                     { name: "Lander", href: "./lander", time: "Saturdays 2:00 - 4:00", location: "Ricketts 411", color: "from-yellow-400 to-amber-600" },
                     { name: "CORE", href: "./core", time: "Sundays 7:00 - 9:00", location: "JEC 3210", color: "from-emerald-400 to-green-600" },
                     { name: "Executive Committee", href: "./about", time: "Sundays 4:30 - 6:00", location: "JEC 3210", color: "from-purple-400 to-indigo-600" },
-                    ].map((team, i) => (
-                    <motion.div
-                        key={i}
-                        whileHover={{ scale: 1.05, y: -5 }}
-                        whileTap={{ scale: 0.97 }}
-                        className={`p-[2px] rounded-2xl bg-gradient-to-br ${team.color} transition-all duration-300 shadow-lg hover:shadow-xl`}
-                    >
-                        <div className="bg-black rounded-2xl px-6 py-5">
-                        <Link href={team.href} className="text-2xl font-medium hover:underline">
-                            {team.name}
-                        </Link>
-                        <p className="text-lg text-gray-200 mt-1">{team.time}</p>
-                        <p className="text-sm text-gray-400">{team.location}</p>
-                        </div>
-                    </motion.div>
-                    ))}
+                    ].map((team, i) => {
+                        const Component = mounted ? motion.div : 'div';
+                        return (
+                            <Component
+                                key={i}
+                                {...(mounted ? {
+                                    whileHover: { scale: 1.05, y: -5 },
+                                    whileTap: { scale: 0.97 }
+                                } : {})}
+                                className={`p-[2px] rounded-2xl bg-gradient-to-br ${team.color} transition-all duration-300 shadow-lg hover:shadow-xl`}
+                            >
+                                <div className="bg-black rounded-2xl px-6 py-5">
+                                <Link href={team.href} className="text-2xl font-medium hover:underline">
+                                    {team.name}
+                                </Link>
+                                <p className="text-lg text-gray-200 mt-1">{team.time}</p>
+                                <p className="text-sm text-gray-400">{team.location}</p>
+                                </div>
+                            </Component>
+                        );
+                    })}
 
                 </div>
                 </div>
@@ -152,6 +173,6 @@ export default function Home({
             <br></br>
             <Cfooter/>
         </div>
-        
+
     );
 }

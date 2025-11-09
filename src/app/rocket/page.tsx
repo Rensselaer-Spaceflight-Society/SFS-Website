@@ -1,5 +1,5 @@
 'use client'
-import { ReactNode, useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import Image from "next/image";
 import Rpu1Desc from "../components/rpu1-desc";
 import Rpu2Desc from "../components/rpu2-desc";
@@ -36,11 +36,7 @@ const subteamsJson = [
 
 
 
-export default function Rocket({
-  children,
-}: Readonly<{
-  children: ReactNode;
-}>) {
+export default function Rocket() {
   const [scrollY, setScrollY] = useState(0);
 
   useEffect(() => {
@@ -61,8 +57,9 @@ export default function Rocket({
             height={864}
             priority
             style={{
-              transform: `translateY(${scrollY * 0.2}px)`,
+              transform: `scale(1.3) translateX(${scrollY * 0.15}px) translateY(${scrollY * 0.1}px)`,
               transition: "transform 0.1s linear",
+              transformOrigin: "center center",
             }}
           />
         </div>
