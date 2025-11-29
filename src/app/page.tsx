@@ -54,7 +54,7 @@ export default function Home(){
             {/* Big title type stuff */}
             <div className="absolute top-0 overflow-y-hidden z-[-1] min-h-full min-w-full">
                 <Image
-                    className="absolute top-[-95] z-[-1] min-w-full min-h-full scale-x-[-1] opacity-50"
+                    className="absolute top-[-60] sm:top-[-80] md:top-[-95] z-[-1] min-w-full min-h-full scale-x-[-1] opacity-50"
                     src={"/rocket/stand_1.png"}
                     alt=''
                     width="1558"
@@ -65,12 +65,12 @@ export default function Home(){
                         transformOrigin: "center center",
                     }}
                 ></Image>
-                <div className="flex-col p-60 pt-40 font-sans items-center text-center justify-center min-h-full mt-22 min-w-full bg-transparent">
-                    <p className="lg:text-7xl md:text-5xl text-white">
+                <div className="flex-col p-6 sm:p-8 md:p-16 lg:p-60 pt-8 sm:pt-16 md:pt-32 lg:pt-40 font-sans items-center text-center justify-center min-h-full mt-4 sm:mt-8 md:mt-16 lg:mt-22 min-w-full bg-transparent">
+                    <p className="text-2xl sm:text-3xl md:text-5xl lg:text-7xl text-white leading-tight px-4">
                         Interested in Rocket Engines, Satellites, or Space Exploration?
                     </p>
                     <br />
-                    <p className="lg:text-2xl md:text-xl mt-10 text-white">Show up to one of our committee meetings or
+                    <p className="text-sm sm:text-base md:text-lg lg:text-2xl mt-6 sm:mt-8 md:mt-10 text-white px-4">Show up to one of our committee meetings or
                     join us at our General Body Meeting on Saturday {
                         meeting ? `${next_sat.toLocaleString('default', { month: 'long' })} ${next_sat.getDate()}`
                         : `${leapfrog_day.toLocaleString('default', { month: 'long' })} ${leapfrog_day.getDate()}`
@@ -88,9 +88,9 @@ export default function Home(){
                 </Gallery>
             </div>
 
-            <div className="flex flex-col items-center justify-center text-center py-20 text-white bg-transparent">
-                <p className="text-4xl font-semibold mb-6">Meeting Times</p>
-                <div className="flex flex-wrap justify-center gap-6 max-w-4xl">
+            <div className="flex flex-col bg-black items-center justify-center text-center py-10 sm:py-16 md:py-20 text-white px-4">
+                <p className="text-2xl sm:text-3xl md:text-4xl font-semibold mb-6">Meeting Times</p>
+                <div className="flex flex-wrap justify-center gap-3 sm:gap-4 md:gap-6 max-w-6xl">
 
                     {[
                     { name: "Rocket Engine", href: "./rocket", time: "Sundays 1:00 - 3:00", location: "Ricketts 207", color: "from-red-500 to-orange-500" },
@@ -129,7 +129,7 @@ export default function Home(){
             <div className="h-150 bg-black min-w-full text-black flex justify-center"> {
             /* TODO: add google calendar  https://calendar.google.com/calendar/u/0?cid=cnBpLnNwYWNlZmxpZ2h0QGdtYWlsLmNvbQ*/
             }
-            <iframe src="https://calendar.google.com/calendar/embed?src=rpi.spaceflight%40gmail.com&ctz=America%2FNew_York" style={{border: 0}} width="800" height="600" frameBorder={0} scrolling="no"></iframe>
+            <iframe src="https://calendar.google.com/calendar/embed?src=rpi.spaceflight%40gmail.com&ctz=America%2FNew_York" style={{border: 0}} width="1200" height="600" frameBorder={0} scrolling="no"></iframe>
             </div>
 
             <hr className="h-px my-8 bg-gray-200 border-0 dark:bg-gray-700"></hr>

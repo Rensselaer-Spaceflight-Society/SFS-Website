@@ -8,10 +8,10 @@ const CommitteeMenu = () => {
   return (
     <div className="h-auto w-30 bg-white z-10 shadow-xl relative justify-between flex flex-col items-center">
       <Link className="hover:opacity-[0.75]" href="/rocket">Rocket</Link>
-      <Link className="hover:opacity-[0.75]" href="/lander">Lander</Link>
       <Link className="hover:opacity-[0.75]" href="/lunar">Lunar</Link>
-      <Link className=" hover:opacity-[0.75]" href="/cubesat">CubeSat</Link>
       <Link className=" hover:opacity-[0.75]" href="/core">CORE</Link>
+      <Link className=" hover:opacity-[0.75]" href="/cubesat">CubeSat</Link>
+      <Link className="hover:opacity-[0.75]" href="/lander">Lander</Link>
     </div>
   );
 }
@@ -50,7 +50,7 @@ export default function Navbar() {
           <Dropdown href="#" MenuContent={<CommitteeMenu />}>
             Committees
           </Dropdown>
-          <Dropdown href="/archive">Archive</Dropdown>
+          <Dropdown href="/projects">Projects</Dropdown>
           <Dropdown href="/about">About</Dropdown>
         </div>
       </div>
