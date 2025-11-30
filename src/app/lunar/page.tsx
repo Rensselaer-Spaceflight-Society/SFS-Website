@@ -9,22 +9,22 @@ import { Moon, Sun, Anvil, AirVent } from "lucide-react";
 const subteamsJson = [
   {
     title: "Testing",
-    photo: "lunar/moon_crusher_2.png",
+    photo: "/lunar/moon_crusher_2.png",
     description: "Using RPI’s Materials Research Center, our testing team is able to get measurements for the stress-strain curve for each of the samples. The tests conducted by the testing team focus on the tensile and compressive properties. The tensile (stretch) tests use dogbones made by the molding team, which are then used in a universal testing machine (UTM) to collect upwards of 10000 points of data. The compressive tests use the same machine, allowing for large and robust datasets.",
   },
   {
     title: "Molding",
-    photo: "lunar/moon-molding-3.jpg",
+    photo: "/lunar/moon-molding-3.jpg",
     description: "The molding team of the Lunar R&D Committee focuses on creating the samples of regolith that are used by every other team. Our molding team ensures that each sample of the composite is well mixed, has the correct ratio of regolith to epoxy, and won’t cause additional skew in the data. Molding also handles the organization and the experimental units of the regolith and epoxy.",
   },
   {
     title: "Optics",
-    photo: "lunar/moon-optics-2.jpg",
+    photo: "/lunar/moon-optics-2.jpg",
     description: "The optics team is working with a gonioreflectometer in order to measure the reflectivity of each of the lunar regolith-epoxy samples. The gonioreflectometer, along with a light source and photosensor, allows us to measure the reflectivity of light onto a sample over a wide range of angles, allowing for a more approximate measure of albedo with visible light.",
   },
   {
     title: "Documentation",
-    photo: "",
+    photo: "/lunar/placeholder.jpg",
     description: "The documentation team is in charge of the overall data analysis, write-up, and publishing of the data from all of the other teams. Through the use of statistical tests and other analysis techniques, the documentation team will be able to interpret the data gathered by the other teams.",
   },
 ];
@@ -112,7 +112,7 @@ export default function Lunar() {
                     },
                 ]}
                 ctaHref="#subteams"
-                imageSrc="lunar/moon_crusher_1.png"
+                imageSrc="/lunar/moon_crusher_1.png"
                 imageDimensions={{
                     width:500,
                     height:300,

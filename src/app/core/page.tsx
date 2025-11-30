@@ -7,22 +7,22 @@ import Cfooter from "../components/cfooter"
 const subteamsJson = [
     {
         title: "Turbomachinery",
-        photo: "core/core-3.jpg",
+      photo: "/core/core-3.jpg",
         description: "Designs and develops the core rotating components of the gas turbine, including compressors, turbines, and rotors.",
     },
     {
         title: "Combustion and Systems",
-        photo: "core/core-4.jpg",
+      photo: "/core/core-4.jpg",
         description: "Manages the combustion chamber, fuel systems, and overall engine to ensure efficient and safe operation.",
     },
     {
         title: "Structures",
-        photo: "core/core-2.png",
+      photo: "/core/core-2.png",
         description: "Designs and models structural components using CAD and performs FEA for compliance with safety and performance requirements.",
     },
     {
         title: "Safety",
-        photo: "",
+      photo: "/core/placeholder.jpg",
         description: "Ensures safe design, testing protocols, and operational procedures to protect club members and equipment.",
     },
 ];

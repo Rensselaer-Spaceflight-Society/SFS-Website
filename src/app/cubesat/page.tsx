@@ -7,37 +7,37 @@ import Cfooter from "../components/cfooter"
 const subteamsJson = [
   {
     title: "Payload",
-    photo: "",
+    photo: "/cubesat/placeholder.jpg",
     description: "Designs and tests FPGA boards and TEG arrays for space environment performance.",
   },
   {
     title: "ADCS",
-    photo: "",
+    photo: "/cubesat/placeholder.jpg",
     description: "Develops attitude determination and control systems for orientation/positioning.",
   },
   {
     title: "Computing",
-    photo: "",
+    photo: "/cubesat/placeholder.jpg",
     description: "Manages flight software, data processing, and onboard computing systems.",
   },
   {
     title: "Electrical",
-    photo: "",
+    photo: "/cubesat/placeholder.jpg",
     description: "Designs power systems, solar panels, and electrical integration for the satellite.",
   },
   {
     title: "Safety",
-    photo: "",
+    photo: "/cubesat/placeholder.jpg",
     description: "Designs and simulates the mission plan and ensures satelite safety.",
   },
   {
     title: "Integration/Structures",
-    photo: "",
+    photo: "/cubesat/placeholder.jpg",
     description: "Designs the CubeSat structure and integrates all subsystems into the final vehicle.",
   },
   {
     title: "Communication",
-    photo: "",
+    photo: "/cubesat/placeholder.jpg",
     description: "Develops communication systems for the cubesat and communicates with the ground station.",
   },
 ];

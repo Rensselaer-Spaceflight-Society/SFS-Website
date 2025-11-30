@@ -1,21 +1,16 @@
-import type { NextConfig } from "next";
+import type { NextConfig } from 'next'
+
+const isProd = process.env.NODE_ENV === 'production'
+
+const basePath = isProd ? '' : ''
 
 const nextConfig: NextConfig = {
-  /* config options here */
-  distDir: 'build',
-  experimental: {
-    turbo: {
-      resolveExtensions: ['.tsx', '.ts', '.jsx', '.js', '.mjs', '.json'],
-    },
+  output: 'export',
+  images: {
+    unoptimized: true,
   },
-  webpack: (config, { isServer }) => {
-    if (isServer) {
-      config.resolve.alias = {
-        ...config.resolve.alias,
-      };
-    }
-    return config;
-  },
-};
+  basePath,
+  assetPrefix: basePath ? `${basePath}/` : undefined,
+}
 
-export default nextConfig;
+export default nextConfig
