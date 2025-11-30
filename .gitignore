@@ -24,3 +24,6 @@ yarn-error.log*
 
 # Thumbnails/previews
 .swc/
+
+# Folders
+build/

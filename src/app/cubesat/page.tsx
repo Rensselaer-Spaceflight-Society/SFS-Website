@@ -6,29 +6,39 @@ import Cfooter from "../components/cfooter"
 
 const subteamsJson = [
   {
-    title: "Subteam 1",
+    title: "Payload",
     photo: "",
-    description: "Placeholder description for subteam 1.",
+    description: "Designs and tests FPGA boards and TEG arrays for space environment performance.",
   },
   {
-    title: "Subteam 2",
+    title: "ADCS",
     photo: "",
-    description: "Placeholder description for subteam 2.",
+    description: "Develops attitude determination and control systems for orientation/positioning.",
   },
   {
-    title: "Subteam 3",
+    title: "Computing",
     photo: "",
-    description: "Placeholder description for subteam 3.",
+    description: "Manages flight software, data processing, and onboard computing systems.",
   },
   {
-    title: "Subteam 4",
+    title: "Electrical",
     photo: "",
-    description: "Placeholder description for subteam 4.",
+    description: "Designs power systems, solar panels, and electrical integration for the satellite.",
   },
   {
-    title: "Subteam 5",
+    title: "Safety",
     photo: "",
-    description: "Placeholder description for subteam 5.",
+    description: "Designs and simulates the mission plan and ensures satelite safety.",
+  },
+  {
+    title: "Integration/Structures",
+    photo: "",
+    description: "Designs the CubeSat structure and integrates all subsystems into the final vehicle.",
+  },
+  {
+    title: "Communication",
+    photo: "",
+    description: "Develops communication systems for the cubesat and communicates with the ground station.",
   },
 ];
 
@@ -50,7 +60,7 @@ export default function CubeSat() {
           <Image
             className="w-full h-full object-cover opacity-40"
             alt=""
-            src="/rocket/manifold.png"
+            src="/cubesat/csli.jpg"
             width={1321}
             height={864}
             priority
@@ -79,7 +89,7 @@ export default function CubeSat() {
             <div className="h-1 w-20 bg-gradient-to-r from-sky-600 to-blue-500 rounded-full"></div>
           </div>
           <p className="text-base sm:text-lg text-gray-700 leading-relaxed max-w-3xl">
-            The CubeSat committee focuses on designing and deploying small satellite systems for space exploration and research. Our team develops compact, innovative solutions for low-Earth orbit missions and beyond.
+            The CubeSat committee is participating in NASA's CubeSat Launch Initiative (CSLI) to design, build, and launch a 1-3U Cubesat, carrying a payload of FPGA boards and a TEG array to measure the performance of both components in the vacuum of space and under intense radiation exposure.
           </p>
         </div>
       </section>

@@ -6,29 +6,19 @@ import Cfooter from "../components/cfooter"
 
 const subteamsJson = [
   {
-    title: "Subteam 1",
-    photo: "",
-    description: "Placeholder description for subteam 1.",
+    title: "Systems",
+    photo: "/lander/lander_1.png",
+    description: "Responsible for the control and adjustments of the lander's systems.",
   },
   {
-    title: "Subteam 2",
-    photo: "",
-    description: "Placeholder description for subteam 2.",
+    title: "Structures",
+    photo: "/lander/lander_4.webp",
+    description: "Develop the lander's chassis and print the parts.",
   },
   {
-    title: "Subteam 3",
-    photo: "",
-    description: "Placeholder description for subteam 3.",
-  },
-  {
-    title: "Subteam 4",
-    photo: "",
-    description: "Placeholder description for subteam 4.",
-  },
-  {
-    title: "Subteam 5",
-    photo: "",
-    description: "Placeholder description for subteam 5.",
+    title: "Flight Dynamics",
+    photo: "/lander/lander_3.png",
+    description: "Responsible for developing the lander's wings and aerodynamcis.",
   },
 ];
 
@@ -50,7 +40,7 @@ export default function Lander() {
           <Image
             className="w-full h-full object-cover opacity-40"
             alt=""
-            src="/rocket/manifold.png"
+            src="/lander/lander_model.webp"
             width={1321}
             height={864}
             priority
@@ -79,7 +69,7 @@ export default function Lander() {
             <div className="h-1 w-20 bg-gradient-to-r from-yellow-600 to-amber-500 rounded-full"></div>
           </div>
           <p className="text-base sm:text-lg text-gray-700 leading-relaxed max-w-3xl">
-            The Lander committee designs and builds spacecraft systems capable of safely landing on celestial bodies. Our team integrates guidance, navigation, and control systems to achieve precise, reliable lunar and planetary landings.
+            The Lander committee is working on designing and building a atmospheric lander that's able to adjust itself in-situ and carry a payload to the ground safely.
           </p>
         </div>
       </section>
