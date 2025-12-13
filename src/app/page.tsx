@@ -93,12 +93,12 @@ export default function Home(){
                 <div className="flex flex-wrap justify-center gap-3 sm:gap-4 md:gap-6 max-w-6xl">
 
                     {[
-                    { name: "Rocket Engine", href: "./rocket", time: "Sundays 1:00 - 3:00", location: "Ricketts 207", color: "from-red-500 to-orange-500" },
-                    { name: "CubeSat", href: "./cubesat", time: "Sundays 11:00 - 1:00", location: "Ricketts 207", color: "from-sky-400 to-blue-600" },
-                    { name: "Lunar R&D", href: "./lunar", time: "Fridays 4:00 - 6:00", location: "Ricketts 411", color: "from-gray-400 to-zinc-600" },
-                    { name: "Lander", href: "./lander", time: "Saturdays 2:00 - 4:00", location: "Ricketts 411", color: "from-yellow-400 to-amber-600" },
-                    { name: "CORE", href: "./core", time: "Sundays 7:00 - 9:00", location: "JEC 3210", color: "from-emerald-400 to-green-600" },
-                    { name: "Executive Committee", href: "./about", time: "Sundays 4:30 - 6:00", location: "JEC 3210", color: "from-purple-400 to-indigo-600" },
+                    { name: "Rocket Engine", href: "./rocket", time: "Sundays 2:00 - 4:00", location: "Ricketts 207", color: "from-red-500 to-orange-500" },
+                    { name: "CubeSat", href: "./cubesat", time: "Sundays 2:00 - 4:00", location: "Ricketts 207", color: "from-sky-400 to-blue-600" },
+                    { name: "Lunar R&D", href: "./lunar", time: "Fridays 4:00 - 6:00", location: "Ricketts 411", color: "from-emerald-400 to-green-600" },
+                    { name: "Lander", href: "./lander", time: "Saturdays 12:00 - 2:00", location: "Ricketts 411", color: "from-blue-400 to-blue-950" },
+                    { name: "CORE", href: "./core", time: "Sundays 7:00 - 9:00", location: "JEC 3210", color: "from-amber-700 to-yello-700" },
+                    { name: "Executive Committee", href: "./about", time: "Sundays 5:00 - 7:00", location: "JEC 3210", color: "from-yellow-300 to-lime-50" },
                     ].map((team, i) => {
                         const Component = mounted ? motion.div : 'div';
                         return (
