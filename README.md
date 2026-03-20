@@ -1,6 +1,6 @@
 # SFS Website
 
-This is the new main website for the club, currently in development and not yet deployed.
+This is the new main website for the club.
 
 ## Development
 
