@@ -27,3 +27,6 @@ yarn-error.log*
 
 # Folders
 build/
+
+# TypeScript incremental build cache
+*.tsbuildinfo

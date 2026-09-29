@@ -12,6 +12,181 @@
   --font-mono: var(--font-geist-mono);
 }
 
+/* RXPI "Flight Log" brand tokens, used by the /rocket pages */
+@theme inline {
+  --color-rxpi-red: #d6001c;
+  --color-rxpi-red-hover: #b30018;
+  --color-rxpi-red-deep: #8e0013;
+  --color-rxpi-red-bright: #ff3b52;
+  --color-rxpi-paper: #faf9f7;
+  --color-rxpi-raised: #ffffff;
+  --color-rxpi-sunken: #f1eee8;
+  --color-rxpi-line: #dcd8d2;
+  --color-rxpi-field: #c7c1b7;
+  --color-rxpi-ink: #16130f;
+  --color-rxpi-muted: #6b645a;
+  --color-rxpi-subtle: #9a9288;
+  --color-rxpi-green: #1f6b3a;
+  --color-rxpi-night: #121110;
+  --color-rxpi-night-raised: #1a1917;
+  --color-rxpi-night-sunken: #0c0b0a;
+  --color-rxpi-night-line: #302d29;
+  --color-rxpi-night-fg: #f2efe9;
+  --color-rxpi-night-muted: #a8a198;
+  --color-rxpi-night-subtle: #6e675d;
+  --color-rxpi-night-green: #5fb07a;
+  --font-plex: var(--font-ibm-plex-sans);
+  --font-plex-mono: var(--font-ibm-plex-mono);
+}
+
+/* RXPI fluid type scale: each size grows with the viewport and stops at its maximum */
+@theme {
+  --breakpoint-3xl: 120rem;
+  --text-rx-display: min(clamp(3.25rem, 2.2rem + 5.4vw, 9.5rem), 18svh);
+  --text-rx-display--line-height: 0.95;
+  --text-rx-h1: min(clamp(2.75rem, 1.6rem + 3.6vw, 6rem), 15svh);
+  --text-rx-h1--line-height: 1.02;
+  --text-rx-h2: clamp(2.125rem, 1.35rem + 2.5vw, 3.875rem);
+  --text-rx-h2--line-height: 1.08;
+  --text-rx-h3: clamp(1.375rem, 1.05rem + 1vw, 2rem);
+  --text-rx-h3--line-height: 1.2;
+  --text-rx-statement: clamp(1.75rem, 1.1rem + 2.1vw, 3.125rem);
+  --text-rx-statement--line-height: 1.2;
+  --text-rx-readout: clamp(1.75rem, 1.1rem + 2vw, 3.375rem);
+  --text-rx-readout--line-height: 1;
+  --text-rx-lead: clamp(1.1875rem, 1.05rem + 0.45vw, 1.5rem);
+  --text-rx-lead--line-height: 1.6;
+  --text-rx-body: clamp(1.0625rem, 1rem + 0.25vw, 1.1875rem);
+  --text-rx-body--line-height: 1.65;
+}
+
+/* The launch in the RXPI hero: a rumble whose strength follows --rx-shake (px), and a flickering flame */
+@utility animate-rx-shake {
+  animation: rx-shake 90ms linear infinite;
+  @media (prefers-reduced-motion: reduce) {
+    animation: none;
+  }
+}
+
+@utility animate-rx-flicker {
+  animation: rx-flicker 120ms ease-in-out infinite alternate;
+  @media (prefers-reduced-motion: reduce) {
+    animation: none;
+  }
+}
+
+@keyframes rx-shake {
+  0%, 100% { translate: 0 0; }
+  25% { translate: calc(var(--rx-shake, 0) * 1px) calc(var(--rx-shake, 0) * -0.5px); }
+  50% { translate: calc(var(--rx-shake, 0) * -1px) calc(var(--rx-shake, 0) * 0.5px); }
+  75% { translate: calc(var(--rx-shake, 0) * 0.5px) calc(var(--rx-shake, 0) * 1px); }
+}
+
+@keyframes rx-flicker {
+  from { opacity: 0.85; transform: scaleX(0.94) scaleY(0.97); }
+  to { opacity: 1; transform: scaleX(1.04) scaleY(1.03); }
+}
+
+/* Landscape phones and other short screens */
+@custom-variant short (@media (orientation: landscape) and (max-height: 540px));
+
+/* Desktop windows up to 960px tall (e.g. 1536x864) where a dense pinned scene tightens a little. Declared before
+   compact so compact still wins on shorter screens. */
+@custom-variant snug (@media (min-width: 768px) and (max-height: 960px));
+
+/* Laptop-height windows where pinned scroll scenes need to tighten up to fit (e.g. 1366x768 once browser bars are subtracted) */
+@custom-variant compact (@media (min-width: 768px) and (min-height: 600px) and (max-height: 760px));
+
+/* A pinned stage has to fit on screen, so the largest steps also follow the screen height, and laptop-height
+   windows go back to the tighter scale */
+@media (min-width: 768px) and (max-height: 960px) {
+  :root {
+    --text-rx-statement: min(clamp(1.75rem, 1.1rem + 2.1vw, 3.125rem), 4.9svh);
+    --text-rx-h2: min(clamp(2.125rem, 1.35rem + 2.5vw, 3.875rem), 6.4svh);
+  }
+}
+
+@media (min-width: 768px) and (min-height: 600px) and (max-height: 760px) {
+  :root {
+    --text-rx-display: min(clamp(3rem, 2rem + 5vw, 9rem), 17svh);
+    --text-rx-h1: min(clamp(2.5rem, 1.5rem + 3.2vw, 5.5rem), 14svh);
+    --text-rx-h2: clamp(1.875rem, 1.25rem + 2vw, 3.25rem);
+    --text-rx-h3: clamp(1.25rem, 1rem + 0.8vw, 1.75rem);
+    --text-rx-statement: clamp(1.5rem, 1rem + 1.8vw, 2.75rem);
+    --text-rx-readout: clamp(1.5rem, 1rem + 1.8vw, 3rem);
+    --text-rx-lead: clamp(1.0625rem, 1rem + 0.3vw, 1.3125rem);
+    --text-rx-body: clamp(0.9375rem, 0.9rem + 0.15vw, 1.0625rem);
+  }
+}
+
+:root {
+  --rx-max: 90rem;
+  --rx-gutter: clamp(1rem, 4vw, 4rem);
+  /* RXPI subnav: h-14 plus its 1px border */
+  --rx-subnav: calc(3.5rem + 1px);
+  /* Site navbar (h-20) plus the RXPI subnav. The root layout's <br> and the subnav's -mt-6 cancel out. */
+  --rx-bars: calc(8.5rem + 1px);
+}
+
+@media (width >= 120rem) {
+  :root {
+    --rx-max: 105rem;
+  }
+}
+
+/* Keep anchors and keyboard focus clear of the sticky RXPI subnav. The stable gutter keeps the page
+   width when a modal locks scrolling. */
+html:has([data-rxpi-root]) {
+  /* Positioned so framer-motion's scroll tracking measures sections against it */
+  position: relative;
+  scroll-padding-top: 4.5rem;
+  scroll-padding-bottom: 1rem;
+  scrollbar-gutter: stable;
+  /* Dark canvas, so the reserved gutter matches the overlays when a dialog or the lightbox locks scrolling */
+  background-color: #0c0b0a;
+}
+
+/* A modal dialog (the PDF preview) holds the page, and its pinned scenes, still behind it */
+html:has(dialog:modal) {
+  overflow: hidden;
+}
+
+/* Fallback for IBM Plex Mono while it loads: the same 0.6em character width, with matching ascent and
+   descent, so mono labels don't re-wrap and shift the layout when the web font arrives */
+@font-face {
+  font-family: "RXPI Mono Fallback";
+  src: local("Courier New"), local("CourierNewPSMT"), local("Liberation Mono");
+  ascent-override: 102.5%;
+  descent-override: 27.5%;
+  line-gap-override: 0%;
+}
+
+/* The stuck subnav sits inside the page's scroll-padding band, so without this the browser scrolls the page
+   whenever one of its links gets focus */
+nav[aria-label="RXPI"] :is(a, button) {
+  scroll-margin-top: -4.5rem;
+}
+
+/* Keyboard focus inside a scroll scene shows all of its items, so a focused link is never mid-animation or hidden */
+[data-rx-scene]:focus-within [data-rx-item] {
+  opacity: 1 !important;
+  transform: none !important;
+  clip-path: none !important;
+}
+
+/* Page-width column used by every RXPI section */
+@utility rx-container {
+  width: 100%;
+  margin-inline: auto;
+  max-width: var(--rx-max);
+  padding-inline: var(--rx-gutter);
+}
+
+/* On a full-width band: line the start edge up with rx-container, let the end run to the screen edge */
+@utility rx-pad-start {
+  padding-inline-start: max(var(--rx-gutter), calc((100% - var(--rx-max)) / 2 + var(--rx-gutter)));
+}
+
 @media (prefers-color-scheme: dark) {
   :root {
     --background: #0a0a0a;
