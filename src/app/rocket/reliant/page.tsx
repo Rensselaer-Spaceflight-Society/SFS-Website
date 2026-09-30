@@ -252,29 +252,7 @@ export default function Reliant() {
               description="Reliant is designed to burn kerosene and self-pressurizing nitrous oxide at a 300 psi chamber pressure, with no active cooling. Its graphite nozzle, wrapped in RTV silicone insulation, absorbs the heat of a short burn, and our thermal model predicts a peak nozzle wall temperature of 969 K after 5 s."
             />
 
-            {/* The section view wipes in, then its callouts are marked one at a time */}
-            <div className="w-full lg:ml-auto lg:max-w-[min(100%,calc((92svh-8rem)*1369/944))]">
-              <RxpiSceneItem at={-0.3} from="wipe">
-                <div className="relative border border-rxpi-line bg-white p-3 sm:p-4 short:mx-auto short:max-w-md">
-                  <RxpiCallouts
-                    src="/rocket/engine_cad_1.png"
-                    alt="Section view of the RPU-1 engine: graphite nozzle, stainless steel casing and angled injector ports"
-                    width={1369}
-                    height={944}
-                    callouts={engineCallouts}
-                    tone="light"
-                    sizes="(min-width: 1024px) 50vw, 100vw"
-                    sceneAt={0}
-                  />
-                  <RxpiCrosshairs tone="light" inset="inset-3" />
-                </div>
-              </RxpiSceneItem>
-              <RxpiSceneItem at={-0.1} from="fade">
-                <p className="mt-3 font-plex-mono text-[11.5px] uppercase tracking-[0.12em] text-rxpi-muted sm:text-xs">
-                  RPU-1 section view · Siemens NX
-                </p>
-              </RxpiSceneItem>
-            </div>
+            
           </div>
         </RxpiScene>
 
