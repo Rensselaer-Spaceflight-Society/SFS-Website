@@ -100,27 +100,7 @@ const designPhotos = [
     meta: "Electronics",
     caption: "Engine-computer PCB, designed in KiCad",
   },
-  {
-    src: "/rocket/stand_2.png",
-    alt: "CAD render of an early RPU-1 test stand concept with the engine in a box frame beside a gas cylinder",
-    meta: "Ground support",
-    caption: "Early test stand concept, CAD render",
-    fit: "contain" as const,
-  },
-  {
-    src: "/rocket/rocket_fea.webp",
-    alt: "Thermal simulation of the RPU-1 inner combustion chamber",
-    meta: "Analysis",
-    caption: "Inner chamber temperature at 10 s, thermal FEA (°F)",
-    fit: "contain" as const,
-  },
-  {
-    src: "/rocket/rocket_pipe_fea.webp",
-    alt: "Structural simulation of a stainless steel threaded pipe fitting",
-    meta: "Analysis",
-    caption: "Von Mises stress in a 304 stainless threaded pipe fitting, static FEA",
-    fit: "contain" as const,
-  },
+
 ];
 
 // The Altair line drawing plots from top to bottom as the Up next band holds, a red plotter line leading the way.
